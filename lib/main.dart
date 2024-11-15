@@ -1,3 +1,5 @@
+import 'package:dayone_app/pages/first_page.dart';
+import 'package:dayone_app/pages/second_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,17 +32,28 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: const Center(child: Text('BuildContext')),
+        title: const Center(child: Text('Navigation')),
       ),
       body: Center(
-        child: TextButton(
-          child: const Text('Snacks'),
-          onPressed: () {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(const SnackBar(content: Text('I m a Snack Bar')));
-          },
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const FirstPage()));
+            },
+            child: const Text('First Page'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SecondPage()));
+            },
+            child: const Text('Second Page'),
+          ),
+        ],
+      )),
     );
   }
 }
