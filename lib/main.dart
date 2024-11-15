@@ -12,10 +12,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: MyHomePage(),
-      debugShowCheckedModeBanner: false,
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, routes: {
+      '/': (context) => const MyHomePage(),
+      '/first': (context) => const FirstPage(),
+      '/second': (context) => const SecondPage(),
+    });
   }
 }
 
@@ -40,15 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const FirstPage()));
+              Navigator.of(context).pushNamed("/first");
             },
             child: const Text('First Page'),
           ),
           TextButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SecondPage()));
+              Navigator.of(context).pushNamed("/second");
             },
             child: const Text('Second Page'),
           ),
