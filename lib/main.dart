@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(debugShowCheckedModeBanner: false, routes: {
       '/': (context) => const MyHomePage(),
-      '/first': (context) => const FirstPage(),
+      '/first': (context) => const FirstPage(name: "",),
       '/second': (context) => const SecondPage(),
     });
   }
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           TextButton(
             onPressed: () {
-              Navigator.of(context).pushNamed("/first");
+              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> const FirstPage(name: "Usman")));
             },
             child: const Text('First Page'),
           ),
